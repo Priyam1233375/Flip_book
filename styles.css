@@ -1,0 +1,105 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+}
+
+.flipbook-container {
+  perspective: 2000px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.flipbook {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.page {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: white;
+  border: 1px solid #ccc;
+  backface-visibility: hidden;
+  transform-origin: right center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.page.right {
+  left: 50%;
+  transform-origin: left center;
+}
+
+.page.flipping {
+  transition: transform 0.7s ease-in-out;
+}
+
+/* Navigation buttons */
+.control-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.control-button.left {
+  left: -60px;
+}
+
+.control-button.right {
+  right: -60px;
+}
+
+.control-button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+}
+
+.control-button:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.8);
+}
